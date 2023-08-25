@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d79e02ebbdf45a43aad18577951da01, type: 3}
+  m_Name: frstar_7
+  m_EditorClassIdentifier: 
+  characterStateData:
+    id: 7
+    name: 
+    characterClass: 0
+    atk: 10
+    hp: 100
+    maxHp: 100
+    np: 0
+    maxNp: 100
+    speed: 120
+    defense: 10
+    magicDefense: 10
+    critRate: 5
+    criticalDamage: 50
+    healing: 0
+    effectHitRate: 0
+    effectResistanceRate: 0
+    npRate: 100
+    tauntValue: 100
+    damageRate: 100
+    getDamageRate: 100
+    actionNum: 3
+  hpList:
+  - 200
+  AI: {fileID: 11400000, guid: 3490c3ad44f777346ac8087c5861e85f, type: 2}

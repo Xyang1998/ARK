@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5bbb747c83e4740b69766238e6c979, type: 3}
+  m_Name: Leader_P
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  iconImage: {fileID: 0}
+  buffID: 124
+  isPermanent: 1
+  buffType: 3
+  only: 1
+  maxLayers: 1
+  buffTurnType: 0
+  durationTurns: 1
+  singleBuffs: []
+  damageBuffs: []
+  camp: 0
+  buff: {fileID: 11400000, guid: 27c86c8f52749634cb2fe7b7608cd640, type: 2}
+  removeWhenDie: 1

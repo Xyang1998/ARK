@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67b5b275cbbf9d47800689a4d078fb3, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  skillID: 31
+  optionalType: 00000000
+  cost: -5
+  canUse: 1
+  turnEnd: 1
+  baseAttribute: 0
+  damageType: 0
+  hitNum: 1
+  hitsRate:
+  - 1
+  damageRate: 1
+  NPGet: 10
+  NPHitsRate:
+  - 1
+  multipleTarget:
+    leftNum: 0
+    rightNum: 0
+  leftAttackRates: []
+  rightAttackRates: []
+  buffs:
+  - {fileID: 11400000, guid: 5930d402c1d893e4e973aa8e4abc8e2f, type: 2}
+  selfBuffs: []
+  drop: {fileID: 7184872634285792132, guid: 68388aba392e8b24692009fd9e47d218, type: 3}
+  speed: 12

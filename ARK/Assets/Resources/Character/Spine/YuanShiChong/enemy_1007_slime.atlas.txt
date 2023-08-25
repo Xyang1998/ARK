@@ -1,0 +1,41 @@
+
+enemy_1007_slime.png
+size: 187,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 2, 2
+  size: 96, 60
+  orig: 96, 60
+  offset: 0, 0
+  index: -1
+Thorn_A
+  rotate: false
+  xy: 100, 2
+  size: 39, 25
+  orig: 39, 25
+  offset: 0, 0
+  index: -1
+Thorn_B
+  rotate: true
+  xy: 100, 29
+  size: 33, 54
+  orig: 33, 54
+  offset: 0, 0
+  index: -1
+Thorn_C
+  rotate: true
+  xy: 156, 31
+  size: 31, 29
+  orig: 31, 29
+  offset: 0, 0
+  index: -1
+Thorn_D
+  rotate: false
+  xy: 141, 9
+  size: 37, 18
+  orig: 37, 18
+  offset: 0, 0
+  index: -1

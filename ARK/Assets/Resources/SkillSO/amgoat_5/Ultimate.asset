@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f204da93b93ad4ab968a35cf459809, type: 3}
+  m_Name: Ultimate
+  m_EditorClassIdentifier: 
+  skillID: 16
+  icon: {fileID: 21300000, guid: 5861ad149a666694490f60dc5522bb02, type: 3}
+  optionalType: 01000000
+  cost: -5
+  damageType: 3
+  hitNum: 5
+  hitsRate:
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  damageRate: 1
+  NPGet: 10
+  NPHitsRate:
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
+  multipleTarget:
+    leftNum: 4
+    rightNum: 4
+  leftAttackRates:
+  - 1
+  - 1
+  - 1
+  - 1
+  rightAttackRates:
+  - 1
+  - 1
+  - 1
+  - 1
+  buffs: []
+  generateOnce: 0
+  boneName: F_Muzzle
+  project: {fileID: 7207786824120112710, guid: 8eaa37e0518574a44b425db906a3243c, type: 3}
+  costTime: 0.3

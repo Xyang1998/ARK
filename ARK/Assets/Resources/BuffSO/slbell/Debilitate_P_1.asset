@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4034e2ea199ac47a957286cdad302d, type: 3}
+  m_Name: Debilitate_P_1
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  iconImage: {fileID: 0}
+  buffID: 9
+  isPermanent: 1
+  buffType: 3
+  only: 1
+  maxLayers: 1
+  buffTurnType: 0
+  durationTurns: 1
+  singleBuffs: []
+  damageBuffs: []
+  debilitate: {fileID: 11400000, guid: a04b23783f3c6524bb695755d77fe66f, type: 2}

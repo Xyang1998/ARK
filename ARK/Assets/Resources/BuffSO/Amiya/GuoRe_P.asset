@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a3cab9dc853474bb788b0aa6d771ca, type: 3}
+  m_Name: GuoRe_P
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 2855de5ca2fe8824a914e039cfdd76fe, type: 3}
+  iconImage: {fileID: 0}
+  buffID: 1
+  buffName: 
+  isPermanent: 1
+  buffType: 3
+  only: 1
+  maxLayers: 5
+  buffTurnType: 0
+  durationTurns: 99999
+  singleBuffs: []
+  damageBuffs: []
+  layerInDamage: 30
