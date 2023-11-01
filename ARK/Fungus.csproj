@@ -131,9 +131,9 @@
      <Compile Include="Assets\Fungus\Scripts\Interfaces\IFungusCollection.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\Property\RigidbodyProperty.cs" />
      <Compile Include="Assets\Fungus\Scripts\Utils\EventDispatcher.cs" />
+     <Compile Include="Assets\Fungus\Scripts\Interfaces\IDialogInputListener.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\MenuTimer.cs" />
      <Compile Include="Assets\Fungus\Scripts\Components\Variable.cs" />
-     <Compile Include="Assets\Fungus\Scripts\Interfaces\IDialogInputListener.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Loaders\EmbeddedResourcesScriptLoader.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\ScaleTo.cs" />
      <Compile Include="Assets\Fungus\Scripts\VariableTypes\Vector3Variable.cs" />
@@ -299,8 +299,8 @@
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Interop\DescriptorHelpers.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Execution\VM\Processor\Processor_Scope.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\Math\BaseUnaryMathCommand.cs" />
-     <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Interop\StandardDescriptors\MemberDescriptors\ObjectCallbackMemberDescriptor.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\Input\GetKey.cs" />
+     <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Interop\StandardDescriptors\MemberDescriptors\ObjectCallbackMemberDescriptor.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Diagnostics\PerformanceCounters\IPerformanceStopwatch.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Tree\Expression_.cs" />
      <Compile Include="Assets\Fungus\Scripts\Components\Command.cs" />
@@ -323,8 +323,8 @@
      <Compile Include="Assets\Fungus\Scripts\Commands\SetSpriteOrder.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Tree\Loop.cs" />
      <Compile Include="Assets\Fungus\Scripts\Utils\PortraitUtils.cs" />
-     <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Execution\VM\Processor\Processor_IExecutionContext.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\NameSpace_XmlHelp.cs" />
+     <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Execution\VM\Processor\Processor_IExecutionContext.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\Comment.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\SetAnimInteger.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Compatibility\Frameworks\FrameworkCore.cs" />
@@ -347,8 +347,8 @@
      <Compile Include="Assets\Fungus\Thirdparty\Microsoft\ReflectionExtensions.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Interop\StandardDescriptors\HardwiredDescriptors\HardwiredMethodMemberDescriptor.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Execution\Scopes\BuildTimeScopeFrame.cs" />
-     <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\DataTypes\TablePair.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\StopTweens.cs" />
+     <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\DataTypes\TablePair.cs" />
      <Compile Include="Assets\Fungus\Scripts\Components\FungusState.cs" />
      <Compile Include="Assets\Fungus\Scripts\EventHandlers\MonoBehaviour\Trigger.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\Platforms\PlatformAccessorBase.cs" />
@@ -462,8 +462,8 @@
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\MoonSharp\Interpreter\DataTypes\IScriptPrivateResource.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\GetText.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\DeleteSaveKey.cs" />
-     <Compile Include="Assets\Fungus\Scripts\Commands\Write.cs" />
      <Compile Include="Assets\Fungus\Scripts\Components\View.cs" />
+     <Compile Include="Assets\Fungus\Scripts\Commands\Write.cs" />
      <Compile Include="Assets\Fungus\Scripts\VariableTypes\Collection\IntCollection.cs" />
      <Compile Include="Assets\Fungus\Scripts\Commands\LeanTween\RotateLean.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\JSON\VectorTemplates.cs" />
@@ -984,8 +984,14 @@
      <Reference Include="Unity.Burst.Unsafe">
      <HintPath>E:\Unityproject\ARK\Library\PackageCache\com.unity.burst@1.6.5\Unity.Burst.Unsafe.dll</HintPath>
      </Reference>
+     <Reference Include="BehaviorDesigner.Runtime">
+     <HintPath>E:\Unityproject\ARK\Assets\Behavior Designer\Runtime\BehaviorDesigner.Runtime.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Burst.Cecil.Mdb">
      <HintPath>E:\Unityproject\ARK\Library\PackageCache\com.unity.burst@1.6.5\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+     </Reference>
+     <Reference Include="BehaviorDesigner.Editor">
+     <HintPath>E:\Unityproject\ARK\Assets\Behavior Designer\Editor\BehaviorDesigner.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.IonicZip">
      <HintPath>E:\Unityproject\ARK\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>

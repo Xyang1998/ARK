@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   skillID: 8
-  icon: {fileID: 21300000, guid: 305a4607db7fb43498aa4679e04699a0, type: 3}
   optionalType: 00000000
   cost: -5
+  canUse: 1
+  turnEnd: 1
+  baseAttribute: 0
   damageType: 4
   hitNum: 1
   hitsRate:
@@ -29,4 +31,6 @@ MonoBehaviour:
     rightNum: 0
   leftAttackRates: []
   rightAttackRates: []
-  buffs: []
+  buffs:
+  - {fileID: 11400000, guid: d5a4f30e72d9fd0408cdbe309be90d10, type: 2}
+  selfBuffs: []

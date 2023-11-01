@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class CharacterStateData
@@ -42,6 +43,7 @@ public class CharacterStateData
         get => hp;
         set
         {
+            
             if (value <= 0)
             {
                 hp = 0;
@@ -54,9 +56,12 @@ public class CharacterStateData
             {
                 hp = value;
             }
+            OnHPChanged.Invoke();
         }
     }
-    
+
+    public UnityAction OnHPChanged = new UnityAction(()=>{});
+
     [SerializeField]
     private float maxHp=100;
     public float MaxHP
@@ -66,12 +71,21 @@ public class CharacterStateData
         {
             if (value < 1)
             {
+                if (maxHp > value)
+                {
+                    HP = Math.Clamp(HP, 1, value);
+                }
                 maxHp = 1;
             }
             else
             {
+                if (maxHp > value)
+                {
+                    HP = Math.Clamp(HP, 1, value);
+                }
                 maxHp = value;
             }
+            OnHPChanged.Invoke();
         }
     }
     
@@ -90,8 +104,10 @@ public class CharacterStateData
             {
                 np = value;
             }
+            OnNPChanged.Invoke();
         }
     }
+    public UnityAction OnNPChanged = new UnityAction(()=>{});
     
     [SerializeField]
     private float maxNp=100;
@@ -108,7 +124,9 @@ public class CharacterStateData
             {
                 maxNp = value;
             }
+            OnNPChanged.Invoke();
         }
+        
     }
     
     [SerializeField]
@@ -333,9 +351,9 @@ public class CharacterStateData
  
     public CharacterStateData ToBattleState()
     {
-        return  DeepCopy.DeepCopyByReflect(this);
+        return  DeepCopy.DeepCopyByReflect<CharacterStateData>(this);
     }
-
+    
     public void ToWorldState(float _hp, float _np)
     {
         HP = _hp;

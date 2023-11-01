@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 41918789d3a153148b4047e264658dc0, type: 3}
   iconImage: {fileID: 0}
-  buffID: 201
+  buffID: 12
   isPermanent: 1
   buffType: 3
   only: 1
@@ -23,4 +23,6 @@ MonoBehaviour:
   durationTurns: 1
   singleBuffs: []
   damageBuffs: []
-  inheritanceOfFaith_Ori: {fileID: 11400000, guid: 2fa4c0e7ce341f7439abcfe4a2b4856e, type: 2}
+  targetBuff_Ori: {fileID: 11400000, guid: 2fa4c0e7ce341f7439abcfe4a2b4856e, type: 2}
+  endAnimName: Skill_2_End
+  loopAnimName: Skill_2_Loop

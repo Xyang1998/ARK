@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9addf5d2eb56541b7a57303540cc8d, type: 3}
+  m_Name: GloriousFlag_P
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 81980e0d95b839a45b57611f2d175713, type: 3}
+  iconImage: {fileID: 0}
+  buffID: 14
+  isPermanent: 1
+  buffType: 3
+  only: 1
+  maxLayers: 1
+  buffTurnType: 0
+  durationTurns: 1
+  singleBuffs:
+  - temp: 0
+    targetProperty: 18
+    initiatorProperty: 0
+    numericalFundamental: 0
+    modified: 10
+    modified_per: 0
+  damageBuffs: []
+  targetBuff_Ori: {fileID: 11400000, guid: 736d09797fa30e24094f65fbfba272fe, type: 2}
+  endAnimName: Skill_3_End
+  loopAnimName: Skill_3_Loop

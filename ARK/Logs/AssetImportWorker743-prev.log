@@ -1,0 +1,196 @@
+Using pre-set license
+Built from '2021.3/china_unity/release' branch; Version is '2021.3.2f1c1 (7ac240095d88) revision 8045120'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22621) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 16021 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\Program Files\2021.3.2f1c1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker743
+-projectPath
+E:/Unityproject/ARK
+-logFile
+Logs/AssetImportWorker743.log
+-srvPort
+54141
+Successfully changed project path to: E:/Unityproject/ARK
+E:/Unityproject/ARK
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+AS: AutoStreaming module initializing.
+mdb reader table full -> cleaning up stale readers. Current readers:
+    pid     thread     txnid
+     15500 7870 -
+     15500 72a4 -
+     15500 5350 -
+     18260 7b2c -
+     40940 748 -
+     44100 a8cc -
+     45916 ab0c -
+     28420 2e5c -
+     44444 a91c -
+     44496 8fac -
+     45776 9ddc -
+     46416 b554 -
+     42436 f84 -
+     26380 b52c -
+     46504 b588 -
+     15500 19cc -
+     15500 9d38 -
+     15500 488c -
+     40880 b16c -
+     46692 b670 -
+     15500 3ba8 -
+     43224 9f88 -
+     46180 b45c -
+     46744 b694 -
+     46196 b498 -
+     47044 ac70 -
+     46652 b6ac -
+     44844 af5c -
+     46800 b724 -
+     46368 b428 -
+     45184 9668 -
+      6856 b7d4 -
+     46968 b6c8 -
+     40448 4808 -
+     46444 b6f0 -
+      1216 af00 -
+     46536 16ec -
+     43684 afb4 -
+     25792 a9e4 -
+     12944 a6c4 -
+     45816 a50c -
+     46896 a618 -
+     43740 b3c4 -
+     15500 6974 -
+     15500 84ec -
+     15500 3cb4 -
+     15500 4314 -
+     15500 2db0 -
+     15500 7a30 -
+     15500 7b1c -
+     15500 573c -
+     15500 96e0 -
+     15500 96ac -
+     15500 c84 -
+     15500 6b44 -
+     15500 2f18 -
+      5016 b704 -
+     11052 b5b0 -
+     45820 a674 -
+     45180 b34c -
+     21844 b564 -
+     46204 ab08 -
+     46220 b260 -
+     46856 aff4 -
+     44280 74f8 -
+     46476 b264 -
+     44308 aa00 -
+     44704 b3fc -
+     47432 b94c -
+      7768 b13c -
+     47172 aa90 -
+     47264 b89c -
+     43408 a4b8 -
+     48068 ac74 -
+     46276 a57c -
+     46992 b460 -
+     15500 6574 -
+     46280 b7f0 -
+     47608 b914 -
+     44536 b54c -
+     45472 a0a4 -
+     40832 b8c4 -
+     46576 bac8 -
+     29400 b1a8 -
+     44784 a6c8 -
+     45540 ba5c -
+     45104 bbf0 -
+     43284 b6c0 -
+     47248 a24c -
+     44484 bb00 -
+     47680 b534 -
+     41428 b9c0 -
+     47896 b2d4 -
+     41868 b7e8 -
+     46916 b3bc -
+     45940 b3d0 -
+     45496 b02c -
+     47216 824 -
+     40716 b4f8 -
+     44616 bbbc -
+     47740 bb40 -
+     47664 b6b8 -
+     43932 b7e0 -
+     46804 bbd0 -
+     47988 b3a4 -
+     46556 bbc8 -
+     24096 b848 -
+     46524 8950 -
+     47124 b808 -
+     45096 ba74 -
+     44352 9ef4 -
+     39088 8f84 -
+     46936 b3b0 -
+     45692 ae64 -
+     46480 2564 -
+     46560 b9d8 -
+     40064 afdc -
+     46208 b268 -
+     42724 b5fc -
+     46768 b898 -
+     43584 b994 -
+     43160 52c4 -
+     42844 ab78 -
+     45368 3a2c -
+     42784 b750 -
+     47308 ad00 44119
+Cleaned out 104 stale readers
+Refreshing native plugins compatible for Editor in 184.89 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.2f1c1 (7ac240095d88)
+[Subsystems] Discovering subsystems at path D:/Program Files/2021.3.2f1c1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/Unityproject/ARK/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2560)
+    Vendor:   NVIDIA
+    VRAM:     6009 MB
+    Driver:   31.0.15.3758
+Initialize mono
+Mono path[0] = 'D:/Program Files/2021.3.2f1c1/Editor/Data/Managed'
+Mono path[1] = 'D:/Program Files/2021.3.2f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Program Files/2021.3.2f1c1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,address=127.0.0.1:54126,server=n,suspend=y

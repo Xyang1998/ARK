@@ -16,6 +16,7 @@ public class PlayerController : ISystem
     private int isAttackID=Animator.StringToHash("IsAttack");
     private bool moveAndAttackLock = false; //锁定移动和攻击
     private PlayableDirector director;
+    private InteractiveObject curObj;
 
     public MyPlayable Player
     {
@@ -50,18 +51,7 @@ public class PlayerController : ISystem
         }
     }
 
-    private void Update()
-    {
-        if (!moveAndAttackLock)
-        {
-            Attack();
-        }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Test();
-        }
-    }
 
     private void FixedUpdate()
     {
@@ -118,12 +108,47 @@ public class PlayerController : ISystem
 
     public override void Tick()
     {
-        
+        if (!moveAndAttackLock)
+        {
+            Attack();
+            Interact();
+        }
     }
 
-    public void Test()
+    public void Interact()
     {
-        playerAnimator.Play("Skill_2");
-        //Debug.log("1");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log(curObj);
+            if (curObj)
+            {
+                curObj.Interact();
+            }
+        }
+    }
+
+    
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+
+        Debug.Log(col.transform.name);
+        InteractiveObject obj = col.GetComponent<InteractiveObject>();
+        if (obj)
+        {
+            curObj = obj;
+            obj.TriggerEnter();
+        }
+
+    }
+    
+    private void OnTriggerExit2D(Collider2D col)
+    {
+
+        if (curObj)
+        {
+            curObj.TriggerExit();
+        }
+        curObj = null;
+
     }
 }

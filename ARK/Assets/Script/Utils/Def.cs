@@ -31,7 +31,9 @@ public enum CharacterCamp
     
     Player,
     Enemy,
-    Self
+    Self,
+    Summoned,
+    System //系统角色
 }
 /// <summary>
 /// 该buff随着角色回合减少还是随着整体回合减少
@@ -130,10 +132,9 @@ public struct SelectResult
 [Serializable]
 public struct EnemySetting
 {
-    public int num;
     public int ID;
-    public EnemyName enemyName;
-
+    public int num;
+    
 }
 
 public static class DeepCopy
@@ -208,7 +209,9 @@ public enum CharacterClass
     Sniper,
     Pioneer,
     Medic,
-    Caster
+    Caster,
+    Enemy,
+    Boss
 }
 
 public static class FilePath

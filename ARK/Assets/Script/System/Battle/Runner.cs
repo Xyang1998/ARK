@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Runner:IComparable<Runner> //行动条上移动的橘色
+public class Runner:IComparable<Runner>//行动条上移动的橘色
 {
     private CharacterCamp camp;
 
@@ -86,7 +86,44 @@ public class Runner:IComparable<Runner> //行动条上移动的橘色
     public int CompareTo(Runner other)
     {
         return RemainTime.CompareTo(other.RemainTime);
+        FlipA a = new FlipA();
+        Book b =new  Book(a);
     }
 
 
+}
+public interface Flip
+{
+
+    void FlipBook(Book book);
+}
+
+public class FlipA:Flip
+{
+    public void FlipBook(Book book)
+    {
+        //翻书方法A
+    }
+}
+public class FlipB:Flip
+{
+    public void FlipBook(Book book)
+    {
+        //翻书方法B
+    }
+}
+
+public class Book
+{
+    private Flip comp;
+
+    public Book(Flip c)
+    {
+        comp = c;
+    }
+
+    void FlipSelf()
+    {
+        comp.FlipBook(this);
+    }
 }

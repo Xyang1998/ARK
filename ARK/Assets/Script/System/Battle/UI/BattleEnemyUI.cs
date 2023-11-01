@@ -20,8 +20,8 @@ public class BattleEnemyUI : BaseBattleUI
         Vector3 screenPos = battleCamera.WorldToScreenPoint(enemyUIPoint.position);
         ////Debug.log(screenPos);
         transform.position = screenPos;
-        
-        
+
+
     }
 
 

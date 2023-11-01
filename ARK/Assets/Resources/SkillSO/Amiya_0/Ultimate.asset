@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Ultimate
   m_EditorClassIdentifier: 
   skillID: 3
-  icon: {fileID: 21300000, guid: 9449a0c427ed13f49a5b4c749d3926bb, type: 3}
   optionalType: 01000000
   cost: -5
+  canUse: 1
+  turnEnd: 1
+  baseAttribute: 0
   damageType: 3
   hitNum: 11
   hitsRate:
@@ -50,3 +52,5 @@ MonoBehaviour:
   leftAttackRates: []
   rightAttackRates: []
   buffs: []
+  selfBuffs:
+  - {fileID: 0}

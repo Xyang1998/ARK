@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "Debilitate",menuName = "ScriptableObject/Debilitate")]
+//[CreateAssetMenu(fileName = "Debilitate",menuName = "ScriptableObject/Debilitate")]
 public class Debilitate : BaseBuff
 {
     [Tooltip("hp小于等于多少时生效")]

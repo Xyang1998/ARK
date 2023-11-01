@@ -6,7 +6,7 @@ using Spine;
 using Spine.Unity;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Project",menuName = "ScriptableObject/Project")]
+[CreateAssetMenu(fileName = "Project",menuName = "ScriptableObject/Others/Project")]
 public class MagicProject : BaseSkill
 {
     //创建魔法弹的骨骼

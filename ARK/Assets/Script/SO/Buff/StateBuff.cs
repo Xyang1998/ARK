@@ -13,7 +13,10 @@ public class StateBuff : BaseBuff
         exist=_target.HasBuff(buffID);
         if (exist)
         {
-            exist.ResetRemain(durationTurns);
+            if (durationTurns >= exist.RemainTurns)
+            {
+                exist.ResetRemain(durationTurns);
+            }
         }
         else
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 
-[CreateAssetMenu(fileName = "Brilliance",menuName = "ScriptableObject/Brilliance")]
+//[CreateAssetMenu(fileName = "Brilliance",menuName = "ScriptableObject/Brilliance")]
 public class Brilliance : BaseBuff
 {
     private PlayableAsset tempAsset;

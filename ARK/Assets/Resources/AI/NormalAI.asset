@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041d6cbcb9ea4dd4693192add4524fcb, type: 3}
   m_Name: NormalAI
   m_EditorClassIdentifier: 
-  skillProb: 0
+  skillProb: 0.5

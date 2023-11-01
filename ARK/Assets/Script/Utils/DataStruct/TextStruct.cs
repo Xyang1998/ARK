@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,4 +29,25 @@ public struct CharacterText
     public string characterClass;
     public string description;
     public string skillIDs;
+}
+/// <summary>
+/// 危机合约
+/// </summary>
+public struct ContractText
+{
+    public int id;
+    public string iconName;
+    public string name;
+    public string group;
+    public string level;
+    public string description;
+    public string conflictIDs;
+
+}
+[Serializable]
+public struct MapEnemySetting
+{
+    public int EnemyID;
+    public EnemySetting[] enemySetting;
+    public EnemySetting[] reserveEnemySetting;
 }

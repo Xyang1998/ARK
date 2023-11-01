@@ -248,11 +248,11 @@ public class DetailUI : MonoBehaviour
         buffContent.sizeDelta = size;
         foreach (var buff in l)
         {
-
-                GameObject go = BuffViewPool.GetBuffView();
-                go.GetComponent<BuffViewUI>()
-                    .BindBuff(buff.icon, "", "", buff.CurLayers, buff.isPermanent, buff.RemainTurns);
-                go.transform.SetParent(buffContent);
+            BuffText text = TextSystem.buffExcelLoader.GetTextStruct(buff.buffID);
+            GameObject go = BuffViewPool.GetBuffView();
+            go.GetComponent<BuffViewUI>()
+                    .BindBuff(buff.icon, text.buffName, text.description, buff.CurLayers, buff.isPermanent, buff.RemainTurns);
+            go.transform.SetParent(buffContent);
             
         }
     }

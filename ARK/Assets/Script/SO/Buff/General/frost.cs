@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "frost",menuName = "ScriptableObject/frost")]
+//[CreateAssetMenu(fileName = "frost",menuName = "ScriptableObject/frost")]
 public class frost : StateBuff
 {
     private GameObject bingkuai;

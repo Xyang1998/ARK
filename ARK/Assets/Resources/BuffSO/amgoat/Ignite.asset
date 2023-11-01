@@ -13,17 +13,24 @@ MonoBehaviour:
   m_Name: Ignite
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 7958a0270bda7d8438238f4877c54eea, type: 3}
+  changeBase: 0
   iconImage: {fileID: 0}
-  buffID: 0
-  buffName: 
+  buffID: 4
   isPermanent: 0
   buffType: 1
   only: 0
   maxLayers: 1
   buffTurnType: 0
   durationTurns: 3
-  singleBuffs: []
+  singleBuffs:
+  - temp: 0
+    targetProperty: 0
+    initiatorProperty: 0
+    numericalFundamental: 0
+    modified: 0
+    modified_per: 0
   damageBuffs:
   - damageType: 2
+    baseAttribute: 0
     damageRate: 1
     fixedDamage: 0

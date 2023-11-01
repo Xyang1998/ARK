@@ -15,8 +15,8 @@ MonoBehaviour:
   characterStateData:
     id: 0
     isDead: 0
-    atk: 1000
-    hp: 20
+    atk: 10
+    hp: 100
     maxHp: 100
     np: 10
     maxNp: 100

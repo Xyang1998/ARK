@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -8,9 +9,13 @@ using UnityEngine;
 [Serializable]
 public class Enemy_OnMap : MonoBehaviour
 {
-    public EnemySetting[] enemySetting;
-    public EnemySetting[] reserveEnemySetting;
+
+    public int EnemyID;
+    public MapEnemySetting mapEnemySetting;
     public AudioClip bgm;
 
-
+    public void Start()
+    {
+        mapEnemySetting = TextSystem.enemySettingTextLoader.GetTextStruct(EnemyID);
+    }
 }

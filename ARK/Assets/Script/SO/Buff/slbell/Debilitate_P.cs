@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "Debilitate_P",menuName = "ScriptableObject/Debilitate_P")]
+//[CreateAssetMenu(fileName = "Debilitate_P",menuName = "ScriptableObject/Debilitate_P")]
 public class Debilitate_P : BaseBuff
 {
     public BaseBuff debilitate;

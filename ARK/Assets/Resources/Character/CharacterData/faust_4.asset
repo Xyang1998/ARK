@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStateData:
     id: 4
-    name: 
-    characterClass: 0
+    isDead: 0
     atk: 10
     hp: 100
     maxHp: 100
     np: 0
     maxNp: 100
-    speed: 10
+    speed: 111
     defense: 10
     magicDefense: 10
     critRate: 5

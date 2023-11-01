@@ -18,8 +18,19 @@ public class CharSelectView : MonoBehaviour
     private CharUI_Select preUI;
     private CharUI_Select curUI;
     public Detail_Select detailSelect;
+    private GameObject characterUIPrefab;
 
-    
+    public void Awake()
+    {
+        characterUIPrefab = Resources.Load<GameObject>(FilePath.onMapUIPrefabPath + "CharacterUI_OnSelect");
+    }
+
+    public void Start()
+    {
+        characterUIPrefab = Resources.Load<GameObject>(FilePath.onMapUIPrefabPath + "CharacterUI_OnSelect");
+    }
+
+
     public async UniTask CharSelectAction()
     {
         
@@ -53,7 +64,7 @@ public class CharSelectView : MonoBehaviour
             {
                 if (charIndex >= list.Count) break;
                 GameObject CharSelectable =
-                    Instantiate(Resources.Load<GameObject>(FilePath.onMapUIPrefabPath + "CharacterUI_OnSelect"),
+                    Instantiate(characterUIPrefab,
                         col.transform);
                 CharSelectable.GetComponent<CharUI_Select>().Init(list[charIndex],this);
                 needToDestroy.Add(CharSelectable);

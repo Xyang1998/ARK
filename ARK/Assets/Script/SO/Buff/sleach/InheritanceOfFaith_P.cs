@@ -7,23 +7,26 @@ using UnityEngine;
 /// <summary>
 /// 琴柳回合开始时，回收军旗并获得COST
 /// </summary>
-[CreateAssetMenu(fileName = "InheritanceOfFaith_P",menuName = "ScriptableObject/InheritanceOfFaith_P")]
+//[CreateAssetMenu(fileName = "InheritanceOfFaith_P",menuName = "ScriptableObject/InheritanceOfFaith_P")]
 public class InheritanceOfFaith_P : BaseBuff
 {
-    public BaseBuff inheritanceOfFaith_Ori;
-    private BaseBuff inheritanceOfFaith;
+    public BaseBuff targetBuff_Ori;
+    public string endAnimName;
+    public string loopAnimName;
+    private BaseBuff targetBuff;
     private string temp;
     public override void AddBuffToTarget(BaseCharacter _initiator, BaseCharacter _target)
     {
-        if (!inheritanceOfFaith)
+        if (!targetBuff)
         {
-            inheritanceOfFaith = Instantiate(inheritanceOfFaith_Ori);
-            inheritanceOfFaith.AddBuffToTarget(_initiator,_target);
+            targetBuff = Instantiate(targetBuff_Ori);
+            targetBuff.AddBuffToTarget(_initiator,_target);
         }
         base.AddBuffToTarget(_initiator, _initiator);
         target = _target;
         temp = initiator.AnimAndDamageController.idleName;
-        initiator.AnimAndDamageController.idleName = "Skill_2_Loop";
+        initiator.AnimAndDamageController.idleName = loopAnimName;
+        initiator.ultimateUseAction += Ultimate;
     }
 
     public override void MyTurnStart()
@@ -36,15 +39,17 @@ public class InheritanceOfFaith_P : BaseBuff
 
     public override void BuffRemove()
     {
+        initiator.ultimateUseAction -= Ultimate;
         Character self = initiator as Character;
         if (self!=null)
         {
             (self.skill as InheritanceOfFaith).RemoveDrop();
+            (self.ultimate as InheritanceOfFaith).RemoveDrop();
         }
-        target.RemoveBuff(inheritanceOfFaith);
+        target.RemoveBuff(targetBuff);
         if (initiator.BattleCharacterStateData.isDead == false)
         {
-            initiator.AnimAndDamageController.animationState.SetAnimation(0, "Skill_2_End", false);
+            initiator.AnimAndDamageController.animationState.SetAnimation(0, endAnimName, false);
             initiator.AnimAndDamageController.animationState.Complete += Complete;
         }
         else
@@ -60,8 +65,15 @@ public class InheritanceOfFaith_P : BaseBuff
         initiator.AnimAndDamageController.idleName = temp;
         initiator.AnimAndDamageController.animationState.SetAnimation(0, initiator.AnimAndDamageController.idleName,
                 true);
-        
         base.BuffRemove();
+    }
+
+    /// <summary>
+    /// 使用终结技时，强制回收军旗
+    /// </summary>
+    public void Ultimate()
+    {
+        initiator.RemoveBuff(this);
     }
     
 }

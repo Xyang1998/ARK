@@ -77,11 +77,12 @@ public class SystemMediator : MonoBehaviour
     private void Update()
     {
 
+        playerController.Tick();
     }
 
     private void GetSystem()
     {
-        playerController = GetComponent<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>();
         mySceneManager = FindObjectOfType<MySceneManager>().GetComponent<MySceneManager>();
         teamState = FindObjectOfType<TeamState>().GetComponent<TeamState>();
         textSystem=FindObjectOfType<TextSystem>().GetComponent<TextSystem>();

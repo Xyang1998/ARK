@@ -12,12 +12,11 @@ public class UISystem_OnMap : ISystem
     private UIActionQueueManager uiActionQueueManager;
     public RectTransform teamUI;
     public CharSelectView charSelectView;
+    public ContractSelectView contractSelectView;
+    public DJManager DjManager;
 
     
-    /// <summary>
-    /// 当前可选角色，因为Defer不能带参
-    /// </summary>
-    
+
 
     public override void Init()
     {
@@ -42,18 +41,14 @@ public class UISystem_OnMap : ISystem
 
     public void ShowTeamUI()
     {
-        CanvasGroup canvasGroup = teamUI.GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 1;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
+        ShowCanvasGroup(teamUI.GetComponent<CanvasGroup>());
+
     }
 
     public void HideTeamUI()
     {
-        CanvasGroup canvasGroup = teamUI.GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
+        HideCanvasGroup(teamUI.GetComponent<CanvasGroup>());
+
     }
 
     public void AddSelectCharActionToQueue()
@@ -61,6 +56,27 @@ public class UISystem_OnMap : ISystem
         var task = UniTask.Defer(charSelectView.CharSelectAction);
         uiActionQueueManager.AddAction(task);
         uiActionQueueManager.Play();
+    }
+
+    public void AddContractSelectActionToQueue()
+    {
+        var task = UniTask.Defer(contractSelectView.ContractSelectAction);
+        uiActionQueueManager.AddAction(task);
+        uiActionQueueManager.Play();
+    }
+
+    public static void ShowCanvasGroup(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    public static void HideCanvasGroup(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
    

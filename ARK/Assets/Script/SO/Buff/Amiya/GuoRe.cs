@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GuoRe",menuName = "ScriptableObject/GuoRe")]
+//[CreateAssetMenu(fileName = "GuoRe",menuName = "ScriptableObject/GuoRe")]
 public class GuoRe : BaseBuff
 {
     [Tooltip("每层增加伤害")]

@@ -28,13 +28,17 @@ public class BattleSystem : SingletonMono<BattleSystem>
     public  List<Character> characters;
     public  List<Enemy> enemies;
     public  List<Character_OnMap> reserveEnemies;
+    private SystemCharacter systemCharacter;
     private BattleUISystem battleUISystem;
+    private List<BaseContract> contracts;
     public GameObject playerSpawnPointParent;
     private Transform[] playerSpawnPoints = new Transform[4];
     public GameObject enemySpawnPointParent;
     private Transform[] enemySpawnPoints = new Transform[4];
 
     private List<Runner> runners;
+    
+    
     private Dictionary<GameObject, BaseCharacter> GOToCharacterDict;
     private GameObject selectedTargetGO; //选择的目标
     private CharacterCamp[] defualtCamps = new CharacterCamp[] { CharacterCamp.Enemy };//默认可选择敌人（在播放动画时等等。。）
@@ -46,6 +50,7 @@ public class BattleSystem : SingletonMono<BattleSystem>
     private Queue<Func<BaseCharacter, UniTask>> priPriorityActionQueue;
     private Queue<BaseCharacter> priPriorityActionInitiatorQueue;
     private CancellationTokenSource cancellationTokenSource; //用于选择时取消释放大招
+    
 
     private AudioSystem audioSystem;
     public List<Runner> Runners
@@ -57,6 +62,23 @@ public class BattleSystem : SingletonMono<BattleSystem>
     private int totalTrun = 0;
     private int cost = 0;
 
+    private float costRate = 1.0f;
+
+    public float CostRate
+    {
+        get => costRate;
+        set
+        {
+            if (value <= 0)
+            {
+                costRate = 0;
+            }
+            else
+            {
+                costRate = value;
+            }
+        }
+    }
     public int Cost
     {
         get => cost;
@@ -75,6 +97,11 @@ public class BattleSystem : SingletonMono<BattleSystem>
     /// 生成角色时调用，用于全局buff,参数为目标
     /// </summary>
     public UnityAction<BaseCharacter> spawnAction;
+
+    /// <summary>
+    /// 危机合约Apply
+    /// </summary>
+    private UnityAction<BaseCharacter> contractAction;
     /// <summary>
     /// 角色死亡时调用，用于全局buff,参数为目标
     /// </summary>
@@ -138,6 +165,7 @@ public class BattleSystem : SingletonMono<BattleSystem>
 
     public void Awake()
     {
+        systemCharacter = new SystemCharacter();
         actionQueue = new Queue<Func<BaseCharacter,CancellationToken,UniTask>>();
         actionInitiatorQueue = new Queue<BaseCharacter>();
         
@@ -151,17 +179,20 @@ public class BattleSystem : SingletonMono<BattleSystem>
         characters = CreateCharactersFromOnMaps(teamState.characterOnMaps);
         enemies = CreateEnemiesFromOnMaps(teamState.enemiesOnMaps);
         reserveEnemies = teamState.reserveEnemies;
+        contracts = teamState.selectedContracts;
         audioSystem = AudioSystem.Instance;
         cancellationTokenSource = new CancellationTokenSource();
         GOToCharacterDict = new Dictionary<GameObject, BaseCharacter>();
         runners = new List<Runner>();
         
         
-        spawnAction = new UnityAction<BaseCharacter>(_=>{});
+        spawnAction = new UnityAction<BaseCharacter>(_ => { });
+        contractAction = new UnityAction<BaseCharacter>(ApplyContractToCharacter);
         deadAction = new UnityAction<BaseCharacter>(_ => { });
         playerTurnEndAction = new UnityAction<BaseCharacter, BaseCharacter, BaseSkill>((_, _, _) => { });
 
     }
+    
 
     private List<Character> CreateCharactersFromOnMaps(List<Character_OnMap> list)
     {
@@ -194,7 +225,7 @@ public class BattleSystem : SingletonMono<BattleSystem>
     {
         foreach (var character in characters)
         {
-            if (character.BattleCharacterStateData.isDead == false)
+            if (character.CharacterStateData.isDead == false)
             {
                 GOToCharacterDict.Add(character.CharacterGO, character);
             }
@@ -228,6 +259,7 @@ public class BattleSystem : SingletonMono<BattleSystem>
         GetPointsAndSpawn(); //设置小人位置
         PriPriorityActionAdd(SpawnToPlay, null);
         InitGOToCharacterDict();
+        InitBuff();
         battleUISystem.InitCharacterState(characters); //初始化ui
         battleUISystem.InitEnemyState(enemies); //初始化ui
         
@@ -300,7 +332,7 @@ public class BattleSystem : SingletonMono<BattleSystem>
     {
         
         InitRunners();
-        InitBuff();
+        
         Cost = NumericalDefinition.startCost;
         //TODO:回合开始时执行什么？（道具，加成等等）
         Run();
@@ -441,6 +473,27 @@ public class BattleSystem : SingletonMono<BattleSystem>
 
     private void InitBuff() //实现加成等等。。
     {
+        costRate = 1.0f;
+        contractAction.Invoke(systemCharacter);
+        //首先引用合约到basevalue
+        foreach (var character in characters)
+        {
+            contractAction.Invoke(character);
+        }
+        foreach (var enemy in enemies)
+        {
+            contractAction.Invoke(enemy);
+        }
+        //复制basevalue到currentvalue
+        foreach (var character in characters)
+        {
+            character.CreateBattleData();
+        }
+        foreach (var enemy in enemies)
+        {
+            enemy.CreateBattleData();
+        }
+        
         foreach (var character in characters)
         {
             character.InitPassiveBuff();
@@ -521,7 +574,7 @@ public class BattleSystem : SingletonMono<BattleSystem>
                 }
             }
         }
-        else //敌方
+        else if(first.CharacterDataStruct.characterCamp == CharacterCamp.Enemy)//敌方
         {
             Enemy enemy=first as Enemy;
             for (int i = 0; i < enemy.BattleCharacterStateData.ActionNum;i++)
@@ -558,6 +611,10 @@ public class BattleSystem : SingletonMono<BattleSystem>
             }
             
 
+        }
+        else //召唤物等等
+        {
+            
         }
 
         if (first.BattleCharacterStateData.isDead|| !first.CanDoAction())
@@ -608,6 +665,7 @@ public class BattleSystem : SingletonMono<BattleSystem>
         {
             battleUISystem.AddPriRunner(initiator.CharacterDataStruct.icon);
             initiator.UltimateUse();
+            initiator.ultimateUseAction.Invoke();
             UniTaskCompletionSource source = new UniTaskCompletionSource();
             audioSystem.PlayVoice(initiator.characterAudio.UTurnClip);
             var selectedGO = await battleUISystem.Ultimate(initiator);
@@ -643,6 +701,7 @@ public class BattleSystem : SingletonMono<BattleSystem>
         battleUISystem.AddRunnersUI(spawnRunners);
         foreach (var enemy in SpawnEnemies)
         {
+            contractAction.Invoke(enemy);
             spawnAction.Invoke(enemy);
         }
         return SpawnEnemies;
@@ -855,6 +914,15 @@ public class BattleSystem : SingletonMono<BattleSystem>
         if (num == 0) return true;
         return false;
     }
+
+    private void ApplyContractToCharacter(BaseCharacter c)
+    {
+        foreach (var contract in contracts)
+        {
+            contract.ApplyContract(c);
+        }
+    }
+
     
     
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TheIncarnationOfSage",menuName = "ScriptableObject/TheIncarnationOfSage")]
+//[CreateAssetMenu(fileName = "TheIncarnationOfSage",menuName = "ScriptableObject/TheIncarnationOfSage")]
 public class TheIncarnationOfSage : BaseBuff
 {
     public override void AfterAttack(BaseCharacter _initiator, BaseCharacter _target, BaseSkill skill)

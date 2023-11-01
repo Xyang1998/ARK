@@ -1,0 +1,325 @@
+Using pre-set license
+Built from '2021.3/china_unity/release' branch; Version is '2021.3.2f1c1 (7ac240095d88) revision 8045120'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22621) 64bit CoreCountrySpecific' Language: 'zh' Physical Memory: 16021 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\Program Files\2021.3.2f1c1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker639
+-projectPath
+E:/Unityproject/ARK
+-logFile
+Logs/AssetImportWorker639.log
+-srvPort
+54141
+Successfully changed project path to: E:/Unityproject/ARK
+E:/Unityproject/ARK
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+AS: AutoStreaming module initializing.
+mdb reader table full -> cleaning up stale readers. Current readers:
+    pid     thread     txnid
+     15500 7870 -
+     15500 72a4 -
+     15500 5350 -
+     44816 af14 -
+     42904 ab34 -
+     43872 28c8 -
+     22376 554c -
+     41736 a724 -
+     43300 13e0 -
+     20224 af30 -
+     43012 781c -
+     42076 6cfc -
+     26392 a2a8 -
+     44200 aca4 -
+     44164 af80 -
+     15500 19cc -
+     15500 9d38 -
+     15500 488c -
+     43916 a878 -
+     10076 1260 -
+     15500 3ba8 -
+     43700 4290 -
+     20424 a470 -
+     42080 ac80 -
+     43852 a70c -
+     43936 ae10 -
+     44772 a6a4 -
+     44224 af9c -
+     35996 ac1c -
+     43100 aa78 -
+     40452 acc8 -
+     44868 ade8 -
+     42948 a504 -
+     44480 addc -
+      1832 a4e0 -
+     41688 aa14 -
+     43864 4fd8 -
+     44912 ab14 -
+     43112 a5c0 -
+     44528 70f4 -
+     43416 af98 -
+     43472 1ea0 -
+     25908 aec0 -
+     15500 6974 -
+     15500 84ec -
+     15500 3cb4 -
+     15500 4314 -
+     15500 2db0 -
+     15500 7a30 -
+     15500 7b1c -
+     15500 573c -
+     15500 96e0 -
+     15500 96ac -
+     15500 c84 -
+     15500 6b44 -
+     15500 2f18 -
+     29452 5b10 -
+     44500 ab1c -
+     41480 aab0 -
+     44472 9dd0 -
+     38788 1774 -
+     44268 30a8 -
+     26140 aac0 -
+     12460 ad78 -
+     44140 a1bc -
+     43268 a808 -
+     40596 a8a0 -
+     33452 ae9c -
+     33372 a738 -
+     38412 641c -
+     40652 a6e0 -
+     42876 9f00 -
+     44968 aa54 -
+     11140 a304 -
+     44884 917c -
+     44456 379c -
+     15500 6574 -
+     44660 a2f8 -
+     45236 b0b8 -
+     44176 7a0c -
+     43572 a838 -
+     45192 b1ac -
+     43036 2584 -
+     11708 7a5c -
+     45712 b294 -
+     45868 b330 -
+     44296 983c -
+     45676 60f8 -
+     43620 a944 -
+     44780 ac94 -
+     30216 a438 -
+     41608 941c -
+     40340 2d74 -
+     43764 b2f0 -
+     45972 6154 -
+     45224 b2b4 -
+     45892 a65c -
+     44012 a538 -
+      2416 704 -
+     45812 9c14 -
+     44064 b114 -
+     16088 a864 -
+     45260 b23c -
+     45272 b0a4 -
+     40724 b1cc -
+     43400 b398 -
+     38808 b320 -
+     44708 9924 -
+     43464 a774 -
+     45908 b2a0 -
+     42048 8e4 -
+     46044 b3a8 -
+     44312 ace4 -
+     28760 af50 -
+     18936 a0e4 -
+     18436 b3e8 -
+     41220 b390 -
+     45024 afe8 -
+     45064 a5ac -
+     43096 933c -
+     45616 7f14 -
+     43192 acdc -
+     41336 3c40 -
+     44208 6f18 -
+     45792 b2bc -
+     44000 b19c -
+Cleaned out 105 stale readers
+mdb reader table full -> cleaning up stale readers. Current readers:
+    pid     thread     txnid
+     15500 7870 -
+     15500 72a4 -
+     30264 45f8 -
+     43232 ae58 -
+     44816 af14 -
+     42904 ab34 -
+     43872 28c8 -
+     22376 554c -
+     41736 a724 -
+     43300 13e0 -
+     20224 af30 -
+     43012 781c -
+     42076 6cfc -
+     26392 a2a8 -
+     44200 aca4 -
+     44164 af80 -
+     15500 19cc -
+     15500 3a48 -
+     43916 a878 -
+     15500 7100 -
+     10076 1260 -
+     43700 4290 -
+     20424 a470 -
+     15500 3ba8 -
+     42080 ac80 -
+     43852 a70c -
+     43936 ae10 -
+     44772 a6a4 -
+     44224 af9c -
+     35996 ac1c -
+     43100 aa78 -
+     40452 acc8 -
+     44868 ade8 -
+     42948 a504 -
+     44480 addc -
+      1832 a4e0 -
+     41688 aa14 -
+     43864 4fd8 -
+     44912 ab14 -
+     43112 a5c0 -
+     44528 70f4 -
+     43416 af98 -
+     43472 1ea0 -
+     25908 aec0 -
+     15500 6974 -
+     15500 84ec -
+     15500 3cb4 -
+     15500 4314 -
+     15500 2db0 -
+     15500 7a30 -
+     15500 7b1c -
+     15500 573c -
+     15500 96e0 -
+     15500 96ac -
+     15500 c84 -
+     15500 6b44 -
+     15500 2f18 -
+     29452 5b10 -
+     44500 ab1c -
+     41480 aab0 -
+     44472 9dd0 -
+     38788 1774 -
+     44268 30a8 -
+     26140 aac0 -
+     12460 ad78 -
+     44140 a1bc -
+     43268 a808 -
+     40596 a8a0 -
+     33452 ae9c -
+     33372 a738 -
+     38412 641c -
+     40652 a6e0 -
+     42876 9f00 -
+     44968 aa54 -
+     11140 a304 -
+     44884 917c -
+     44456 379c -
+     44660 a2f8 -
+     45236 b0b8 -
+     44176 7a0c -
+     43572 a838 -
+     45192 b1ac -
+     43036 2584 -
+     11708 7a5c -
+     45712 b294 -
+     45868 b330 -
+     44296 983c -
+     45676 60f8 -
+     43620 a944 -
+     44780 ac94 -
+     30216 a438 -
+     41608 941c -
+     40340 2d74 -
+     43764 b2f0 -
+     45972 6154 -
+     45224 b2b4 -
+     45892 a65c -
+     44012 a538 -
+      2416 704 -
+     45812 9c14 -
+     44064 b114 -
+     16088 a864 -
+     45260 b23c -
+     45272 b0a4 -
+     40724 b1cc -
+     43400 b398 -
+     38808 b320 -
+     44708 9924 -
+     43464 a774 -
+     45908 b2a0 -
+     42048 8e4 -
+     46044 b3a8 -
+     44312 ace4 -
+     28760 af50 -
+     18936 a0e4 -
+     18436 b3e8 -
+     41220 b390 -
+     45024 afe8 -
+     45064 a5ac -
+     43096 933c -
+     45616 7f14 -
+     43192 acdc -
+     41336 3c40 -
+     44208 6f18 -
+     45792 b2bc -
+     44000 b19c -
+Cleaned out 107 stale readers
+Refreshing native plugins compatible for Editor in 123.30 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.2f1c1 (7ac240095d88)
+[Subsystems] Discovering subsystems at path D:/Program Files/2021.3.2f1c1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/Unityproject/ARK/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2560)
+    Vendor:   NVIDIA
+    VRAM:     6009 MB
+    Driver:   31.0.15.3758
+Initialize mono
+Mono path[0] = 'D:/Program Files/2021.3.2f1c1/Editor/Data/Managed'
+Mono path[1] = 'D:/Program Files/2021.3.2f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Program Files/2021.3.2f1c1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,address=127.0.0.1:54126,server=n,suspend=y

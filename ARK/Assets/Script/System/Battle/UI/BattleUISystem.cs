@@ -309,13 +309,16 @@ public class BattleUISystem : SingletonMono<BattleUISystem>
 
     public void  InitPlayerStateUI(BaseCharacter character)
     {
-        if (!character.BattleCharacterStateData.isDead)
+        if (!character.CharacterStateData.isDead)
         {
             GameObject battleCharacterUIgo;
             battleCharacterUIgo = Instantiate(battleCharacterUIPrefab, battleCharactersUI.transform);
             BattleCharacterUI battleCharacterUI = battleCharacterUIgo.GetComponent<BattleCharacterUI>();
             character.BindUI(battleCharacterUI);
+            
             battleCharacterUI.Init(character.BattleCharacterStateData,character.CharacterDataStruct);
+            character.BattleCharacterStateData.OnHPChanged += battleCharacterUI.UpdateHP;
+            character.BattleCharacterStateData.OnNPChanged += battleCharacterUI.UpdateNP;
             battleCharacterUI.BindUButton(character);
             character.NPCheck();
             battleCharacterUIs.Add(battleCharacterUI);
@@ -328,6 +331,8 @@ public class BattleUISystem : SingletonMono<BattleUISystem>
         BattleEnemyUI battleEnemyUI = battleEnemyUIgo.GetComponent<BattleEnemyUI>();
         enemy.BindUI(battleEnemyUI);
         battleEnemyUI.Init(enemy.BattleCharacterStateData,enemy.CharacterDataStruct);
+        enemy.BattleCharacterStateData.OnHPChanged += battleEnemyUI.UpdateHP;
+        enemy.BattleCharacterStateData.OnNPChanged += battleEnemyUI.UpdateNP;
         battleEnemyUI.BindBattleCamera(battleCamera,enemy.AnimAndDamageController.HPBar.transform);
         enemy.NPCheck();
         battleEnemyUIs.Add(battleEnemyUI);
@@ -419,7 +424,7 @@ public class BattleUISystem : SingletonMono<BattleUISystem>
 
     public void RunnersMoveAddToQueue() //runners移动unitask添加到队列并执行
     {
-       
+
         var task = UniTask.Defer(QueueRunnersMove);
         uiActionQueueManager.AddAction(task);
         uiActionQueueManager.Play();
@@ -520,8 +525,8 @@ public class BattleUISystem : SingletonMono<BattleUISystem>
         
         CharacterCamp[] skillCamp = initiator.skill.optionalType;
         Sprite skillIcon = initiator.skill.skillDataStruct.icon;
-        skillCostNum.text = initiator.skill.cost.ToString();
-        if (initiator.skill.cost > battleSystem.Cost|| initiator.skill.canUse==false)
+        skillCostNum.text = ((int)battleSystem.CostRate*initiator.skill.cost).ToString();
+        if (initiator.skill.cost >battleSystem.CostRate* battleSystem.Cost|| initiator.skill.canUse==false)
         {
             skillButton.interactable=false;
         }

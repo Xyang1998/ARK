@@ -13,13 +13,12 @@ using Object = UnityEngine.Object;
 
 public class ExcelLoader<T> 
 {
-   private Dictionary<int, T> IDTextDict;
-
+   protected Dictionary<int, T> IDTextDict;
    public ExcelLoader()
    {
       IDTextDict = new Dictionary<int, T>();
    }
-   public void LoadFromPath(string path)
+   public virtual void LoadFromPath(string path)
    {
       if (File.Exists(Application.dataPath + path))
       {
@@ -27,7 +26,7 @@ public class ExcelLoader<T>
          IExcelDataReader excelDataReader = ExcelReaderFactory.CreateBinaryReader(fileStream);
          Type type = typeof(T);
          FieldInfo[] fieldInfos = type.GetFields();
-         Debug.Log(fieldInfos.Length);
+        // Debug.Log(fieldInfos.Length);
          //跳过第一行的定义
          excelDataReader.Read();
          while (excelDataReader.Read())
@@ -35,7 +34,7 @@ public class ExcelLoader<T>
             System.Object t = Activator.CreateInstance<T>();
             for (int i = 0; i < fieldInfos.Length; i++)
             {
-               Debug.Log(excelDataReader.GetValue(i).ToString());
+              // Debug.Log(excelDataReader.GetValue(i).ToString());
                if (i == 0)
                {
                   fieldInfos[i].SetValue(t, int.Parse(excelDataReader.GetValue(i).ToString()));
@@ -91,3 +90,60 @@ public class ExcelLoader<T>
    }
    
 }
+
+public class EnemySettingTextLoader :ExcelLoader<MapEnemySetting> 
+{
+   public override void LoadFromPath(string path)
+   {
+      if (File.Exists(Application.dataPath + path))
+      {
+         FileStream fileStream = File.Open(Application.dataPath + path, FileMode.Open, FileAccess.Read);
+         IExcelDataReader excelDataReader = ExcelReaderFactory.CreateBinaryReader(fileStream);
+
+         //跳过第一行的定义
+         excelDataReader.Read();
+         while (excelDataReader.Read())
+         {
+            MapEnemySetting mapEnemySetting;
+            //每行:地图敌人id;敌人id，数量#敌人id,数量;敌人id,数量#敌人id,名字，数量
+            mapEnemySetting.EnemyID = int.Parse(excelDataReader.GetValue(0).ToString());
+            string[] enemies = excelDataReader.GetValue(1).ToString().Split("#");
+            EnemySetting[] enemySetting = new EnemySetting[enemies.Length];
+            for (int i = 0; i < enemies.Length; i++)
+            {
+               string[] es = enemies[i].Split(','); //id,num
+               enemySetting[i].ID = int.Parse(es[0]);
+               enemySetting[i].num = int.Parse(es[1]);
+            }
+
+            mapEnemySetting.enemySetting = enemySetting;
+            string[] rEnemies = excelDataReader.GetValue(2).ToString().Split("#");
+            EnemySetting[] rEnemySetting;
+            if (!rEnemies[0].Equals("null"))
+            {
+               rEnemySetting = new EnemySetting[rEnemies.Length];
+               for (int i = 0; i < rEnemies.Length; i++)
+               {
+                  string[] es = rEnemies[i].Split(','); //id,num
+                  rEnemySetting[i].ID = int.Parse(es[0]);
+                  rEnemySetting[i].num = int.Parse(es[1]);
+               }
+            }
+            else
+            {
+               rEnemySetting = new EnemySetting[0];
+               
+            }
+            mapEnemySetting.reserveEnemySetting = rEnemySetting;
+            IDTextDict.Add(mapEnemySetting.EnemyID,mapEnemySetting);
+         }
+         
+
+            
+         
+      }
+   }
+}
+
+
+

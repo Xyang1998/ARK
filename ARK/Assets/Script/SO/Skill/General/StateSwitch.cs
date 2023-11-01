@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StateSwitch",menuName = "ScriptableObject/StateSwitch")]
+[CreateAssetMenu(fileName = "StateSwitch",menuName = "ScriptableObject/Others/StateSwitch")]
 public class StateSwitch : BaseSkill
 {
     public override void ManualApply(BaseCharacter initiator, BaseCharacter target)

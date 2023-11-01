@@ -33,12 +33,12 @@ public class MyPlayable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-
+        Debug.Log(col.transform.name);
         if (col.CompareTag("Enemy_OnMap"))
         {
-            Debug.Log(col.transform.name);
+            
             Enemy_OnMap enemyOnMap = col.GetComponent<Enemy_OnMap>();
-            systemMediator.teamState.InitEnemies(enemyOnMap.enemySetting,enemyOnMap.reserveEnemySetting);
+            systemMediator.teamState.InitEnemies(enemyOnMap.mapEnemySetting.enemySetting,enemyOnMap.mapEnemySetting.reserveEnemySetting);
             systemMediator.teamState.bgm = enemyOnMap.bgm;
             systemMediator.mySceneManager.WorldToBattle();
             hitBox.enabled = false;

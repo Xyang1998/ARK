@@ -129,13 +129,15 @@ public abstract class BaseSkill : ScriptableObject
     {
         if (buffs != null)
         {
-            foreach (var buff in buffs)
+            for (int i = 0; i < buffs.Count; i++)
             {
+                var buff = buffs[i];
                 if (buff != null)
                 {
-                    BaseBuff buffInstance = Instantiate(buff);
-                    buffInstance.AddBuffToTarget(initiator, target);
+                        BaseBuff buffInstance = Instantiate(buff);
+                        buffInstance.AddBuffToTarget(initiator, target);
                 }
+                
             }
         }
     }

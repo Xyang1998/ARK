@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Bleed",menuName = "ScriptableObject/Bleed")]
+//[CreateAssetMenu(fileName = "Bleed",menuName = "ScriptableObject/Bleed")]
 public class Bleed : BaseBuff
 {
     public BaseBuff XueNu;

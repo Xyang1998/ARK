@@ -16,9 +16,9 @@ MonoBehaviour:
     id: 1
     isDead: 0
     atk: 10
-    hp: 1000
-    maxHp: 1000
-    np: 100
+    hp: 100
+    maxHp: 100
+    np: 0
     maxNp: 100
     speed: 101
     defense: 10

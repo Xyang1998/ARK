@@ -32,8 +32,11 @@ public static class DamageTextPool
 
     public static void AddToPool(GameObject go)
     {
-        go.SetActive(false);
-        texts.Push(go);
+        if (go)
+        {
+            go.SetActive(false);
+            texts.Push(go);
+        }
     }
     
 }

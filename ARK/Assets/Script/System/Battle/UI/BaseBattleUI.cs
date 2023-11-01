@@ -41,18 +41,12 @@ public abstract class BaseBattleUI : BaseUI
     public override void Init(CharacterStateData data, CharacterDataStruct dataStruct)
     {
         base.Init(data, dataStruct);
-
-
         //outline = HP.GetComponent<Outline>();
         buffIconSize = new Vector2(buffLine.GetComponent<RectTransform>().sizeDelta.y,buffLine.GetComponent<RectTransform>().sizeDelta.y);
         maxBuffIcons = (int)Math.Floor(buffLine.GetComponent<RectTransform>().sizeDelta.x /
                        (buffLine.GetComponent<HorizontalLayoutGroup>().padding.left +
                         buffLine.GetComponent<RectTransform>().sizeDelta.y));
         bufflist = new List<GameObject>();
-        
-
-
-
     }
 
     public virtual void Selected()

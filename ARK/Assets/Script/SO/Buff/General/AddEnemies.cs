@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AddEnemies",menuName = "ScriptableObject/AddEnemies")]
+//[CreateAssetMenu(fileName = "AddEnemies",menuName = "ScriptableObject/AddEnemies")]
 public class AddEnemies : BaseBuff
 {
     public EnemySetting[] enemySettings;

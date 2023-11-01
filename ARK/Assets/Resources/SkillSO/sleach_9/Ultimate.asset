@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee2b26e1d3e0534883e9f558b835349, type: 3}
+  m_Script: {fileID: 11500000, guid: d67b5b275cbbf9d47800689a4d078fb3, type: 3}
   m_Name: Ultimate
   m_EditorClassIdentifier: 
   skillID: 32
@@ -18,11 +18,11 @@ MonoBehaviour:
   canUse: 1
   turnEnd: 1
   baseAttribute: 0
-  damageType: 0
+  damageType: 1
   hitNum: 1
   hitsRate:
   - 1
-  damageRate: 1
+  damageRate: 1.5
   NPGet: 10
   NPHitsRate:
   - 1
@@ -31,5 +31,8 @@ MonoBehaviour:
     rightNum: 0
   leftAttackRates: []
   rightAttackRates: []
-  buffs: []
+  buffs:
+  - {fileID: 11400000, guid: 89037092e1c3ea04aa2184e981301c4e, type: 2}
   selfBuffs: []
+  drop: {fileID: 7184872634285792132, guid: 68388aba392e8b24692009fd9e47d218, type: 3}
+  speed: 12

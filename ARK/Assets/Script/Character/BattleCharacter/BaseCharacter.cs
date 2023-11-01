@@ -28,13 +28,19 @@ public class BaseCharacter
     [Tooltip("原始数据")]
     protected CharacterStateData originalCharacterStateData;
 
+    [Tooltip("原始数据")]
+    public CharacterStateData OriginalCharacterStateData
+    {
+        get=>originalCharacterStateData;
+    }
+
     
     protected CharacterStateData characterStateData;
 
     /// <summary>
     /// 战斗中等同于基础值
     /// </summary>
-    [Tooltip("基础值")]
+    [Tooltip("基础值,BaseValue")]
     public CharacterStateData CharacterStateData
     {
         get
@@ -42,8 +48,9 @@ public class BaseCharacter
             return characterStateData;
         }
     }
-    [Tooltip("实时值")]
+    [Tooltip("实时值,CurrentValue")]
     protected CharacterStateData battleCharacterStateData;
+    [Tooltip("实时值,CurrentValue")]
     public CharacterStateData BattleCharacterStateData //战斗时状态
     {
         get { return battleCharacterStateData; }
@@ -51,7 +58,7 @@ public class BaseCharacter
     public CharacterDataStruct CharacterDataStruct
     {
         get;
-        private set;
+        protected set;
     }
     
     
@@ -117,6 +124,7 @@ public class BaseCharacter
     /// 创建者，目标
     /// </summary>
     public UnityAction myTurnStartAction;
+    public UnityAction ultimateUseAction;
     public UnityAction<BaseCharacter, BaseCharacter,BaseSkill> beforeAttackAction;
     public UnityAction<BaseCharacter, BaseCharacter, BaseSkill> afterAttackAction;
     public UnityAction<BaseCharacter, BaseCharacter, BaseSkill> myTurnEndAction;
@@ -142,6 +150,10 @@ public class BaseCharacter
 
 
 
+    public BaseCharacter()
+    {
+        
+    }
 
 
     public BaseCharacter(BaseCharacterState state,CharacterDataStruct dataStruct)
@@ -151,10 +163,16 @@ public class BaseCharacter
         //BaseCharacterState so = Object.Instantiate(Resources.Load<BaseCharacterState>($"Character/CharacterData/{CharacterDataStruct.name}_{ID}"));
         originalCharacterStateData = state.CharacterStateData;
         characterStateData = DeepCopy.DeepCopyByReflect(originalCharacterStateData);
-        battleCharacterStateData = characterStateData.ToBattleState();
         hpList = state.hpList;
         AI = state.AI;
         //icon=Resources.Load<Sprite>($"UI/UIImage/CharacterIcon/{Name}_{ID}");
+
+    }
+
+    public void CreateBattleData()
+    {
+        battleCharacterStateData = characterStateData.ToBattleState();
+        battleCharacterStateData.HP = battleCharacterStateData.MaxHP;
 
     }
 
@@ -169,6 +187,7 @@ public class BaseCharacter
         getHitAction=new UnityAction<BaseCharacter, BaseCharacter, BaseSkill>((_,_,_)=>{});
         hpChangeAction=new UnityAction<BaseCharacter, BaseCharacter, BaseSkill>((_,_,_)=>{});
         myTurnEndAction = new UnityAction<BaseCharacter, BaseCharacter, BaseSkill>((_,_,_)=>{});
+        ultimateUseAction = new UnityAction(() => { });
         characterAudio = new CharAudio(CharacterDataStruct.name, ID);
         attack = Object.Instantiate(Resources.Load<BaseSkill>($"SkillSO/{CharacterDataStruct.name}_{ID}/Attack"));
         BaseSkill u = Resources.Load<BaseSkill>($"SkillSO/{CharacterDataStruct.name}_{ID}/Ultimate");
@@ -198,7 +217,7 @@ public class BaseCharacter
         {
             LoadAsset(ultimate, $"Timelines/BattleCharacter/{CharacterDataStruct.name}_{ID}/Ultimate");
         }
-        characterGO = GameObject.Instantiate(Resources.Load<GameObject>($"Character/Prefab/Character_Battle/{CharacterDataStruct.name}_{ID}"));
+        characterGO = GameObject.Instantiate(Resources.Load<GameObject>($"Character/Prefab/Character_Battle/{CharacterDataStruct.name}_{ID}")).transform.Find($"{CharacterDataStruct.name}_{ID}").gameObject;
         animAndDamageController = characterGO.GetComponent<AnimAndDamageController>();
        
         spawnAsset=GameObject.Instantiate(Resources.Load<PlayableAsset>($"Timelines/BattleCharacter/{CharacterDataStruct.name}_{ID}/Spawn"));
@@ -233,12 +252,12 @@ public class BaseCharacter
 
     public void CreateAndSetSpawnPos(Transform point)
     {
-        if (!battleCharacterStateData.isDead)
+        if (!originalCharacterStateData.isDead)
         {
             CreateBattleCharacter();
-            characterGO.transform.SetParent(point);
+            characterGO.transform.parent.transform.SetParent(point);
             spawnPoint = point;
-            characterGO.transform.localPosition = new Vector3(0, 0, 0);
+            characterGO.transform.parent.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
 
@@ -314,7 +333,7 @@ public class BaseCharacter
             BattleUISystem.Instance.ShowDamageText(absDamage, AnimAndDamageController.magicPoint.transform,damageType,critical).Forget();
         }
         BattleCharacterStateData.HP -= damage;
-        ui.UpdateHP();
+        //ui.UpdateHP();
         if (final)
         {
             hpChangeAction.Invoke(this,attacker,skill);
@@ -360,7 +379,7 @@ public class BaseCharacter
     public virtual void GetNp(float np)
     {
         BattleCharacterStateData.NP += np;
-        ui.UpdateNP();
+        //ui.UpdateNP();
         if (CanDoAction())
         {
             NPCheck();
@@ -389,7 +408,7 @@ public class BaseCharacter
     public virtual void UltimateUse()
     {
         battleCharacterStateData.NP = 0;
-        ui.UpdateNP();
+        //ui.UpdateNP();
         NPCheck();
     }
 

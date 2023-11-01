@@ -51,16 +51,14 @@ public class TeamState : ISystem  //队伍状态
       }
    }
 
-
-
-
-
-
+   public List<BaseContract> selectedContracts;
 
    
    public void InitEnemies(EnemySetting[] enemySettings,EnemySetting[] reserveEnemiesSettings)
    {
 
+      enemiesOnMaps.Clear();
+      reserveEnemies.Clear();
       foreach (var enemy in enemySettings)
       {
          for (int i = 0; i < enemy.num; i++)
@@ -95,6 +93,7 @@ public class TeamState : ISystem  //队伍状态
       reserveEnemies = new List<Character_OnMap>();
       characterOnMaps = new List<Character_OnMap>();
       enemiesOnMaps = new List<Character_OnMap>();
+      selectedContracts = new List<BaseContract>();
       Gold = 999;
    }
 
@@ -112,7 +111,22 @@ public class TeamState : ISystem  //队伍状态
       characterOnMaps.Add(characterOnMap);
       _systemMediator.uiSystemOnMap.AddCharacterUI(characterOnMap);
    }
-   
+
+   public async UniTaskVoid AddContractsToList(List<ContractUI> selectedUIs)
+   {
+      foreach (var ui in selectedUIs)
+      {
+         ContractStruct contractStruct = ui.ContractStruct;
+         string path = contractStruct.iconName;
+         var go = Resources.LoadAsync<BaseContract>($"ContractSO/{contractStruct.iconName}");
+         var res=await go;
+         BaseContract contract = Instantiate((BaseContract)res);
+         contract.Init(contractStruct);
+         selectedContracts.Add(contract);
+
+      }
+      
+   }
  
    
 

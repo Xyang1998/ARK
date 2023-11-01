@@ -24,6 +24,9 @@ public abstract class BaseBuff : ScriptableObject
     [Tooltip("buff图标")]
     public Sprite icon;
 
+    [Tooltip("该buff修改的是基础值吗？,仅限于场外buff且永续")]
+    public bool changeBase=false;
+
     [Tooltip("挂图标的物体"),HideInInspector]
     public GameObject iconImage;
 
@@ -226,19 +229,41 @@ public abstract class BaseBuff : ScriptableObject
                             (float)basePropertyInfo.GetValue(initiator.CharacterStateData) *
                             singleBuffs[i].modified_per +
                             singleBuffs[i].modified) * CurLayers;*/
-                        singleBuffs[i].temp=(DamageCal.GetValueByAttribute(initiator.CharacterStateData,singleBuffs[i].initiatorProperty)*
-                                            singleBuffs[i].modified_per +
-                                            singleBuffs[i].modified) * CurLayers;
+                        if (changeBase)
+                        {
+                            singleBuffs[i].temp = (DamageCal.GetValueByAttribute(initiator.OriginalCharacterStateData,
+                                                       singleBuffs[i].initiatorProperty) *
+                                                   singleBuffs[i].modified_per +
+                                                   singleBuffs[i].modified) * CurLayers;
+                        }
+                        else
+                        {
+                            singleBuffs[i].temp = (DamageCal.GetValueByAttribute(initiator.CharacterStateData,
+                                                       singleBuffs[i].initiatorProperty) *
+                                                   singleBuffs[i].modified_per +
+                                                   singleBuffs[i].modified) * CurLayers;
+                        }
                     }
                     else
                     {
-                        //基于buff接受者提升数值
-                        /*singleBuffs[i].temp = (
-                            (float)basePropertyInfo.GetValue(target.CharacterStateData) * singleBuffs[i].modified_per +
-                            singleBuffs[i].modified) * CurLayers;*/
-                        singleBuffs[i].temp=(DamageCal.GetValueByAttribute(target.CharacterStateData,singleBuffs[i].initiatorProperty)*
-                                             singleBuffs[i].modified_per +
-                                             singleBuffs[i].modified) * CurLayers;
+
+                        if (changeBase)
+                        {
+                            singleBuffs[i].temp = (DamageCal.GetValueByAttribute(target.OriginalCharacterStateData,
+                                                       singleBuffs[i].initiatorProperty) *
+                                                   singleBuffs[i].modified_per +
+                                                   singleBuffs[i].modified) * CurLayers;
+                        }
+                        else
+                        {//基于buff接受者提升数值
+                            /*singleBuffs[i].temp = (
+                                (float)basePropertyInfo.GetValue(target.CharacterStateData) * singleBuffs[i].modified_per +
+                                singleBuffs[i].modified) * CurLayers;*/
+                            singleBuffs[i].temp = (DamageCal.GetValueByAttribute(target.CharacterStateData,
+                                                       singleBuffs[i].initiatorProperty) *
+                                                   singleBuffs[i].modified_per +
+                                                   singleBuffs[i].modified) * CurLayers;
+                        }
                     }
                 }
                 else
@@ -256,10 +281,22 @@ public abstract class BaseBuff : ScriptableObject
                         baseCharacterType.GetProperty(singleBuffs[i].targetProperty.ToString());
                     targetPropertyInfo?.SetValue(target.BattleCharacterStateData,
                         (float)(targetPropertyInfo.GetValue(target.BattleCharacterStateData)) + singleBuffs[i].temp);*/
-                    float originalTargetAttribute = DamageCal.GetValueByAttribute(target.BattleCharacterStateData,
-                        singleBuffs[i].targetProperty);
-                    DamageCal.SetValueByAttribute(target.BattleCharacterStateData, singleBuffs[i].targetProperty,
-                        originalTargetAttribute + singleBuffs[i].temp);
+                    if (changeBase)
+                    {
+                        
+                        float originalTargetAttribute = DamageCal.GetValueByAttribute(target.CharacterStateData,
+                            singleBuffs[i].targetProperty);
+                        DamageCal.SetValueByAttribute(target.CharacterStateData, singleBuffs[i].targetProperty,
+                            originalTargetAttribute + singleBuffs[i].temp);
+                    }
+                    else
+                    {
+                        float originalTargetAttribute = DamageCal.GetValueByAttribute(target.BattleCharacterStateData,
+                            singleBuffs[i].targetProperty);
+                        DamageCal.SetValueByAttribute(target.BattleCharacterStateData, singleBuffs[i].targetProperty,
+                            originalTargetAttribute + singleBuffs[i].temp);
+                    }
+
                     
                     if (singleBuffs[i].targetProperty == DataProperty.Speed)
                     {
@@ -311,10 +348,15 @@ public abstract class BaseBuff : ScriptableObject
                     Debug.Log(singleBuffs[i].temp);
                     targetPropertyInfo?.SetValue(target.BattleCharacterStateData,
                         (float)(targetPropertyInfo.GetValue(target.BattleCharacterStateData)) - singleBuffs[i].temp);*/
-                    float curTargetAttribute =
-                        DamageCal.GetValueByAttribute(target.BattleCharacterStateData, singleBuffs[i].targetProperty);
-                    DamageCal.SetValueByAttribute(target.BattleCharacterStateData, singleBuffs[i].targetProperty,
-                        curTargetAttribute - singleBuffs[i].temp);
+                    if (!changeBase)
+                    {
+                        float curTargetAttribute =
+                            DamageCal.GetValueByAttribute(target.BattleCharacterStateData,
+                                singleBuffs[i].targetProperty);
+                        DamageCal.SetValueByAttribute(target.BattleCharacterStateData, singleBuffs[i].targetProperty,
+                            curTargetAttribute - singleBuffs[i].temp);
+                    }
+
                     if (singleBuffs[i].targetProperty == DataProperty.Speed)
                     {
                         BattleUISystem.Instance.UpdateAfterRun();

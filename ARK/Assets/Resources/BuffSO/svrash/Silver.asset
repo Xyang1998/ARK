@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 4652330170af61d45be96dae2bdcc873, type: 3}
   iconImage: {fileID: 0}
-  buffID: 126
+  buffID: 11
   isPermanent: 1
   buffType: 0
   only: 1

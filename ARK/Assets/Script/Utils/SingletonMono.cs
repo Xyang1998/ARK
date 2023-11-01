@@ -11,7 +11,7 @@ public class SingletonMono<T> : MonoBehaviour where T:SingletonMono<T>
     {
         get
         {
-            if (instance == null)
+            if (!instance)
             {
                 instance = FindObjectOfType<T>();
             }

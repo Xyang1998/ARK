@@ -310,8 +310,14 @@
      <Reference Include="Unity.Burst.Unsafe">
      <HintPath>E:\Unityproject\ARK\Library\PackageCache\com.unity.burst@1.6.5\Unity.Burst.Unsafe.dll</HintPath>
      </Reference>
+     <Reference Include="BehaviorDesigner.Runtime">
+     <HintPath>E:\Unityproject\ARK\Assets\Behavior Designer\Runtime\BehaviorDesigner.Runtime.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Burst.Cecil.Mdb">
      <HintPath>E:\Unityproject\ARK\Library\PackageCache\com.unity.burst@1.6.5\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+     </Reference>
+     <Reference Include="BehaviorDesigner.Editor">
+     <HintPath>E:\Unityproject\ARK\Assets\Behavior Designer\Editor\BehaviorDesigner.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.IonicZip">
      <HintPath>E:\Unityproject\ARK\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>

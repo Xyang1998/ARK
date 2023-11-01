@@ -76,8 +76,7 @@ public class BaseUI : MonoBehaviour
        hpCurPer = hpTargetPer;
        HP.GetComponent<Image>().material.SetFloat("_CurPer", hpCurPer);
        updatingHP = false;
-    
-    }
+   }
         
     public virtual void UpdateNP()
     {

@@ -10,7 +10,7 @@ public class EventSystem_OnMap : ISystem
     public CharacterDataStruct selected;
     public override void Init()
     {
-        selectable = new List<CharacterDataStruct>();
+ 
     }
 
     public override void Tick()
@@ -26,6 +26,9 @@ public class EventSystem_OnMap : ISystem
     /// <param name="structs"></param>
     public void SelectChar()
     {
+        _systemMediator.uiSystemOnMap.AddContractSelectActionToQueue();
+        _systemMediator.uiSystemOnMap.AddSelectCharActionToQueue();
+        _systemMediator.uiSystemOnMap.AddSelectCharActionToQueue();
         _systemMediator.uiSystemOnMap.AddSelectCharActionToQueue();
         _systemMediator.uiSystemOnMap.AddSelectCharActionToQueue();
     }
@@ -43,24 +46,13 @@ public class EventSystem_OnMap : ISystem
             }
         }
         await UniTask.Delay(1000);
-        AddCharacterToList(characterDataStructs);
+        selectable = new List<CharacterDataStruct>(characterDataStructs);
         SelectChar();
     }
     
 
     
-    /// <summary>
-    /// 添加一个角色到预选列表
-    /// </summary>
-    /// <param name="id"></param>
-    public void  AddCharacterToList(List<CharacterDataStruct> datas)
-    {
-        foreach (var dataStruct in datas)
-        {
-            selectable.Add(dataStruct);
-        }
-    }
-    
+
 
 
 }

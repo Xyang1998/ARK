@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
-[CreateAssetMenu(fileName = "Silver",menuName = "ScriptableObject/Silver")]
+//[CreateAssetMenu(fileName = "Silver",menuName = "ScriptableObject/Silver")]
 public class Silver : BaseBuff
 {
     private BaseSkill silverAttack;
